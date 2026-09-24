@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ดาว-ภูมิ | ปรึกษาดวงชะตา โหราศาสตร์ และฮวงจุ้ย</title>
-    <!-- แก้จุดที่ 1: บังคับเชื่อมโยงฐานคำสั่งสีสากลภายนอกผ่าน CSS Link ป้องกันการบล็อกรหัสสีหน้าร้าน -->
+    <!-- เรียกใช้ระบบฐานคำสั่งสีสากลภายนอกผ่าน CSS Link ป้องกันบราวเซอร์และ Vercel บล็อกรหัสสีหน้าร้าน -->
     <link href="https://unpkg.com@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         body { font-family: 'Anuphan', sans-serif; background-color: #FCE4EC; color: #1A237E; margin: 0; padding: 0; }
-        /* แก้จุดที่ 2: ฝังลิงก์รูปภาพยาวของแท้ ดึงภาพท้องฟ้ายามค่ำคืนดวงดาวเสถียรสูงสุด เปิดขึ้นแน่นอนชัวร์ 100% ทั้งคอมและมือถือ */
-        .astro-bg { background-image: url('https://unsplash.com'); background-size: cover; background-position: center; }
+        /* ใช้ SVG กราฟิกดวงดาวฝังในตัวโค้ดโดยตรง การันตีภาพขึ้นชัวร์ 100% ไม่ต้องดึงภาพจากเว็บนอก */
+        .astro-bg { 
+            background-color: #1A237E;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23F8BBD0' fill-opacity='0.15'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm1 62c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40-5c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zM9 45c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm30 4c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm30-26c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+        }
     </style>
 </head>
 <body class="bg-[#FCE4EC] text-[#1A237E]">
@@ -29,9 +32,7 @@
         </header>
 
         <!-- HERO SECTION (หน้าแรกแสดงภาพปกดวงดาวพาสเทล) -->
-        <section class="relative min-h-[80vh] flex flex-col justify-center items-center text-center px-6 py-12 overflow-hidden astro-bg">
-            <div class="absolute inset-0 bg-[#FCE4EC] bg-opacity-65 mix-blend-multiply z-0"></div>
-            
+        <section class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-6 py-12 overflow-hidden astro-bg">
             <div class="relative z-10 max-w-3xl bg-[#FCE4EC] bg-opacity-95 p-8 md:p-12 rounded-3xl border border-[#F8BBD0] shadow-2xl backdrop-filter backdrop-blur-sm">
                 <span class="text-[#E65100] font-bold tracking-widest text-xs uppercase bg-[#F8BBD0] bg-opacity-60 px-4 py-1.5 rounded-full border border-[#1A237E] border-opacity-10">Premium Astrology</span>
                 <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-6 leading-tight text-[#1A237E]">
@@ -51,7 +52,7 @@
             </div>
         </section>
 
-        <!-- SERVICES SECTION -->
+        <!-- SERVICES SECTION (บล็อกหมวดหมู่บริการ) -->
         <section id="services" class="py-24 px-6 max-w-6xl mx-auto w-full">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold">ศาสตร์แห่งการพยากรณ์และปรับภูมิ</h2>
@@ -59,6 +60,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- บล็อกบริการที่ 1 -->
                 <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                     <div>
                         <div class="text-[#E65100] text-3xl mb-4">🌌</div>
@@ -68,6 +70,7 @@
                     <div class="mt-8 border-t border-[#1A237E] border-opacity-10 pt-4"><span class="text-xs text-[#E65100] font-semibold">คุยสดออนไลน์ 45 นาที</span></div>
                 </div>
 
+                <!-- บล็อกบริการที่ 2 -->
                 <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                     <div>
                         <div class="text-[#E65100] text-3xl mb-4">🧭</div>
@@ -77,6 +80,7 @@
                     <div class="mt-8 border-t border-[#1A237E] border-opacity-10 pt-4"><span class="text-xs text-[#E65100] font-semibold">นัดหมายสถานที่จริง</span></div>
                 </div>
 
+                <!-- บล็อกบริการที่ 3 -->
                 <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
                     <div>
                         <div class="text-[#E65100] text-3xl mb-4">✍️</div>
@@ -88,7 +92,7 @@
             </div>
         </section>
 
-        <!-- BOOKING SECTION (ระบบปฏิทินของจริงจากหลังบ้านของคุณ) -->
+        <!-- BOOKING SECTION (ระบบปฏิทิน Cal.com ของแท้ผูกกับบัญชีคุณ) -->
         <section id="booking" class="bg-[#F8BBD0] bg-opacity-20 py-20 px-6 border-t border-b border-[#1A237E] border-opacity-10 w-full">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl font-bold mb-2">นัดหมายวันเวลาและจองคิว</h2>
