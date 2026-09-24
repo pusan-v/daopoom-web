@@ -4,118 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ดาว-ภูมิ | ปรึกษาดวงชะตา โหราศาสตร์ และฮวงจุ้ย</title>
-    <!-- เรียกใช้ระบบฐานคำสั่งสีสากลภายนอกผ่าน CSS Link ป้องกันบราวเซอร์และ Vercel บล็อกรหัสสีหน้าร้าน -->
-    <link href="https://unpkg.com@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Anuphan', sans-serif; background-color: #FCE4EC; color: #1A237E; margin: 0; padding: 0; }
-        /* ใช้ SVG กราฟิกดวงดาวฝังในตัวโค้ดโดยตรง การันตีภาพขึ้นชัวร์ 100% ไม่ต้องดึงภาพจากเว็บนอก */
-        .astro-bg { 
-            background-color: #1A237E;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23F8BBD0' fill-opacity='0.15'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm1 62c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40-5c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zM9 45c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm30 4c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm30-26c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+        /* ล็อกระบบโครงสร้างสีชมพูพาสเทลและบล็อกหน้าร้านแบบถาวร ไม่โดนบราวเซอร์บล็อกชัวร์ 100% */
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Anuphan', sans-serif; 
+            background-color: #FCE4EC; /* โทนสีชมพูพาสเทลสว่าง */
+            color: #1A237E; /* โทนสีน้ำเงินเข้ม */
+            margin: 0; 
+            padding: 0; 
         }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* HEADER */
+        header { 
+            background-color: rgba(248, 187, 208, 0.8); 
+            backdrop-filter: blur(8px);
+            position: sticky; top: 0; z-index: 50; 
+            padding: 15px 30px; 
+            display: flex; justify-content: space-between; align-items: center;
+            border-b: 1px solid rgba(26, 35, 126, 0.1);
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-box { 
+            width: 40px; height: 40px; 
+            border: 2px solid #E65100; background-color: #1A237E; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+        .logo-text { font-size: 20px; font-weight: bold; }
+        .btn-top { 
+            background-color: #1A237E; color: #FCE4EC; 
+            padding: 8px 20px; border-radius: 20px; 
+            text-decoration: none; font-weight: 500; 
+        }
+
+        /* HERO SECTION WITH CUSTOM IMAGE */
+        .hero { 
+            background-color: #1A237E;
+            /* [จุดแก้ไขรูปภาพ] นำลิงก์รูปภาพที่คุณอัปโหลดฝากเว็บมาวางแปะแทนที่ลิงก์ในเครื่องหมายคำพูดด้านล่างนี้ได้เลยครับ */
+            background-image: linear-gradient(rgba(252, 228, 236, 0.55), rgba(252, 228, 236, 0.55)), url('https://unsplash.com');
+            background-size: cover; background-position: center;
+            padding: 90px 20px; text-align: center;
+        }
+        .hero-card { 
+            background-color: rgba(252, 228, 236, 0.95); 
+            max-width: 800px; margin: 0 auto; padding: 40px; 
+            border-radius: 24px; border: 1px solid #F8BBD0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .badge { 
+            color: #E65100; font-weight: bold; font-size: 14px; 
+            background-color: #F8BBD0; padding: 6px 16px; border-radius: 20px;
+        }
+        h1 { font-size: 36px; font-weight: bold; margin: 24px 0; color: #1A237E; line-height: 1.3; }
+        h1 span { color: #E65100; }
+        .hero-p { color: rgba(26, 35, 126, 0.9); font-size: 16px; margin-bottom: 30px; line-height: 1.6; }
+        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .btn-main { background-color: #E65100; color: #FCE4EC; padding: 12px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 10px rgba(230,81,0,0.2); }
+        .btn-sub { background-color: #1A237E; color: #FCE4EC; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; }
+
+        /* SERVICES SECTION */
+        .services { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 28px; font-weight: bold; margin: 0; }
+        .section-title p { color: #E65100; margin-top: 8px; font-weight: 500; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background-color: rgba(248, 187, 208, 0.3); padding: 30px; 
+            border-radius: 16px; border: 1px solid rgba(26, 35, 126, 0.1);
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card h3 { font-size: 20px; font-weight: bold; margin: 15px 0 10px 0; }
+        .card p { font-size: 14px; color: rgba(26, 35, 126, 0.8); line-height: 1.6; }
+        .card-footer { margin-top: 25px; border-top: 1px solid rgba(26, 35, 126, 0.1); padding-top: 15px; color: #E65100; font-size: 13px; font-weight: 600; }
+
+        /* BOOKING SECTION */
+        .booking-section { background-color: rgba(248, 187, 208, 0.15); padding: 80px 0; border-top: 1px solid rgba(26, 35, 126, 0.1); border-bottom: 1px solid rgba(26, 35, 126, 0.1); text-align: center; }
+        .booking-frame-wrap { background-color: #FCE4EC; padding: 8px; border-radius: 16px; border: 1px solid rgba(26, 35, 126, 0.1); max-width: 900px; margin: 30px auto 0 auto; overflow: hidden; min-height: 650px; }
+        iframe { width: 100%; border: 0; border-radius: 12px; }
+
+        /* FOOTER */
+        footer { padding: 50px 0; text-align: center; border-top: 1px solid rgba(26, 35, 126, 0.1); }
+        .footer-links { display: flex; flex-direction: column; gap: 10px; font-size: 14px; margin-bottom: 25px; }
+        .footer-links a { color: #1A237E; text-decoration: none; font-weight: 500; }
     </style>
 </head>
-<body class="bg-[#FCE4EC] text-[#1A237E]">
+<body>
 
-    <div class="min-h-screen flex flex-col justify-between">
-        <!-- HEADER / NAVIGATION -->
-        <header class="bg-[#F8BBD0] bg-opacity-70 backdrop-filter backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-b border-[#1A237E] border-opacity-10">
-            <div class="flex items-center gap-3">
-                <!-- โลโก้แบรนด์ดีไซน์ดวงดาวและโลกอนาคต โทนสีส้มและน้ำเงินตรงตามโจทย์ของคุณ -->
-                <div class="w-10 h-10 rounded-full border-2 border-[#E65100] bg-[#1A237E] flex items-center justify-center shadow-md">
-                    <span class="text-[#E65100] text-xs font-bold">🌟🔮</span>
-                </div>
-                <span class="text-xl font-bold tracking-wide">ดาว-ภูมิ</span>
+    <!-- HEADER -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-box"><span style="font-size: 14px;">🌟🔮</span></div>
+            <span class="logo-text">ดาว-ภูมิ</span>
+        </div>
+        <a href="#booking" class="btn-top">จองคิวดูดวง</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-card">
+            <span class="badge">Premium Astrology</span>
+            <h1>ไขรหัสลับแห่งจักรวาล <br><span>ชี้ชะตาและปรับเปลี่ยนภูมิชีวิต</span></h1>
+            <p class="hero-p">บริการให้คำปรึกษาด้านดวงชะตา โหราศาสตร์ไทย-ตะวันตก ดูฮวงจุ้ยเพื่อความมั่งคั่งเปิดรับโชคลาภ และตั้งชื่อมงคลหนุนนำความเจริญรุ่งเรืองในอนาคตของคุณ</p>
+            <div class="btn-group">
+                <a href="#booking" class="btn-main">นัดหมายจองคิวออนไลน์</a>
+                <a href="tel:08xxxxxxxx" class="btn-sub">📞 โทรจองคิวโดยตรง</a>
             </div>
-            <a href="#booking" class="bg-[#1A237E] text-[#FCE4EC] px-5 py-2 rounded-full font-medium hover:bg-[#E65100] transition-colors shadow-sm">จองคิวดูดวง</a>
-        </header>
+        </div>
+    </section>
 
-        <!-- HERO SECTION (หน้าแรกแสดงภาพปกดวงดาวพาสเทล) -->
-        <section class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-6 py-12 overflow-hidden astro-bg">
-            <div class="relative z-10 max-w-3xl bg-[#FCE4EC] bg-opacity-95 p-8 md:p-12 rounded-3xl border border-[#F8BBD0] shadow-2xl backdrop-filter backdrop-blur-sm">
-                <span class="text-[#E65100] font-bold tracking-widest text-xs uppercase bg-[#F8BBD0] bg-opacity-60 px-4 py-1.5 rounded-full border border-[#1A237E] border-opacity-10">Premium Astrology</span>
-                <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-6 leading-tight text-[#1A237E]">
-                    ไขรหัสลับแห่งจักรวาล <br><span class="text-[#E65100]">ชี้ชะตาและปรับเปลี่ยนภูมิชีวิต</span>
-                </h1>
-                <p class="text-sm md:text-base mb-8 max-w-xl mx-auto text-[#1A237E] text-opacity-90 leading-relaxed">
-                    บริการให้คำปรึกษาด้านดวงชะตา โหราศาสตร์ไทย-ตะวันตก ดูฮวงจุ้ยเพื่อความมั่งคั่งเปิดรับโชคลาภ และตั้งชื่อมงคลหนุนนำความเจริญรุ่งเรืองในอนาคตของคุณ
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#booking" class="bg-[#E65100] text-[#FCE4EC] font-semibold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform">
-                        นัดหมายจองคิวออนไลน์
-                    </a>
-                    <a href="tel:08xxxxxxxx" class="bg-[#1A237E] text-[#FCE4EC] font-semibold px-6 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
-                        📞 โทรจองคิวโดยตรง
-                    </a>
+    <div class="container">
+        <!-- SERVICES SECTION -->
+        <section class="services">
+            <div class="section-title">
+                <h2>ศาสตร์แห่งการพยากรณ์และปรับภูมิ</h2>
+                <p>เลือกรับการปรึกษาเพื่อปลดล็อกทุกปัญหาชีวิต</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <div style="font-size: 30px;">🌌</div>
+                        <h3>โหราศาสตร์ไทย - ตะวันตก</h3>
+                        <p>ตรวจพื้นดวงชะตา เจาะลึกดวงการงาน การเงิน ความรัก วิเคราะห์จุดเปลี่ยนสำคัญของชีวิตอย่างแม่นยำ</p>
+                    </div>
+                    <div class="card-footer">คุยสดออนไลน์ 45 นาที</div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div style="font-size: 30px;">🧭</div>
+                        <h3>ตรวจเช็กศาสตร์ฮวงจุ้ย</h3>
+                        <p>ปรับเปลี่ยนทิศทางและพลังงานที่อยู่อาศัย ร้านค้า หรือออฟฟิศ เพื่อเปิดรับโชคลาภขจัดอุปสรรคชีวิต</p>
+                    </div>
+                    <div class="card-footer">นัดหมายสถานที่จริง</div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div style="font-size: 30px;">✍️</div>
+                        <h3>ตั้งชื่อ - เปลี่ยนชื่อมงคล</h3>
+                        <p>ออกแบบชื่อและนามสกุลใหม่ที่ถูกโฉลกตามหลักทักษาและเลขศาสตร์ เพื่อเสริมสิริมงคลและเสน่ห์เมตตา</p>
+                    </div>
+                    <div class="card-footer">จัดส่งเล่มรายงานสรุป</div>
                 </div>
             </div>
         </section>
-
-        <!-- SERVICES SECTION (บล็อกหมวดหมู่บริการ) -->
-        <section id="services" class="py-24 px-6 max-w-6xl mx-auto w-full">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold">ศาสตร์แห่งการพยากรณ์และปรับภูมิ</h2>
-                <p class="text-[#E65100] mt-2 font-medium">เลือกรับการปรึกษาเพื่อปลดล็อกทุกปัญหาชีวิต</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- บล็อกบริการที่ 1 -->
-                <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-                    <div>
-                        <div class="text-[#E65100] text-3xl mb-4">🌌</div>
-                        <h3 class="text-xl font-bold mb-3 text-[#1A237E]">โหราศาสตร์ไทย - ตะวันตก</h3>
-                        <p class="text-sm text-[#1A237E] text-opacity-80 leading-relaxed">ตรวจพื้นดวงชะตา เจาะลึกดวงการงาน การเงิน ความรัก วิเคราะห์จุดเปลี่ยนสำคัญของชีวิตอย่างแม่นยำ</p>
-                    </div>
-                    <div class="mt-8 border-t border-[#1A237E] border-opacity-10 pt-4"><span class="text-xs text-[#E65100] font-semibold">คุยสดออนไลน์ 45 นาที</span></div>
-                </div>
-
-                <!-- บล็อกบริการที่ 2 -->
-                <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-                    <div>
-                        <div class="text-[#E65100] text-3xl mb-4">🧭</div>
-                        <h3 class="text-xl font-bold mb-3 text-[#1A237E]">ตรวจเช็กศาสตร์ฮวงจุ้ย</h3>
-                        <p class="text-sm text-[#1A237E] text-opacity-80 leading-relaxed">ปรับเปลี่ยนทิศทางและพลังงานที่อยู่อาศัย ร้านค้า หรือออฟฟิศ เพื่อเปิดรับโชคลาภขจัดอุปสรรคชีวิต</p>
-                    </div>
-                    <div class="mt-8 border-t border-[#1A237E] border-opacity-10 pt-4"><span class="text-xs text-[#E65100] font-semibold">นัดหมายสถานที่จริง</span></div>
-                </div>
-
-                <!-- บล็อกบริการที่ 3 -->
-                <div class="bg-[#F8BBD0] bg-opacity-30 p-8 rounded-2xl border border-[#1A237E] border-opacity-15 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-                    <div>
-                        <div class="text-[#E65100] text-3xl mb-4">✍️</div>
-                        <h3 class="text-xl font-bold mb-3 text-[#1A237E]">ตั้งชื่อ - เปลี่ยนชื่อมงคล</h3>
-                        <p class="text-sm text-[#1A237E] text-opacity-80 leading-relaxed">ออกแบบชื่อและนามสกุลใหม่ที่ถูกโฉลกตามหลักทักษาและเลขศาสตร์ เพื่อเสริมสิริมงคลและเสน่ห์เมตตา</p>
-                    </div>
-                    <div class="mt-8 border-t border-[#1A237E] border-opacity-10 pt-4"><span class="text-xs text-[#E65100] font-semibold">จัดส่งเล่มรายงานสรุป</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOOKING SECTION (ระบบปฏิทิน Cal.com ของแท้ผูกกับบัญชีคุณ) -->
-        <section id="booking" class="bg-[#F8BBD0] bg-opacity-20 py-20 px-6 border-t border-b border-[#1A237E] border-opacity-10 w-full">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-2">นัดหมายวันเวลาและจองคิว</h2>
-                <p class="text-opacity-70 mb-8">เลือกวันเวลาที่สะดวก ตรวจสอบคิวว่าง และกรอกข้อมูลดวงชะตาด้านล่างนี้</p>
-                
-                <div class="bg-[#FCE4EC] rounded-2xl p-2 shadow-inner border border-[#1A237E] border-opacity-10 min-h-[650px] overflow-hidden">
-                    <iframe src="https://cal.com" class="w-full h-[650px] border-0 rounded-xl" scrolling="no"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="py-12 text-center border-t border-[#1A237E] border-opacity-10 px-6 w-full">
-            <div class="max-w-md mx-auto mb-6 flex flex-col gap-3 text-sm">
-                <p class="font-bold">ช่องทางการติดต่อและติดตามหมอดู</p>
-                <a href="https://facebook.com" target="_blank" class="hover:text-[#E65100] transition-colors flex items-center justify-center gap-2 font-medium">
-                    👤 Facebook: ดาว-ภูมิ โหราศาสตร์
-                </a>
-                <span class="text-opacity-80 font-medium">📞 เบอร์โทรศัพท์: 08X-XXX-XXXX</span>
-            </div>
-            <p class="text-xs text-opacity-40">© 2026 ดาว-ภูมิ - ลิขสิทธิ์ถูกต้องตามกฎหมาย</p>
-        </footer>
     </div>
+
+    <!-- BOOKING SECTION -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2>นัดหมายวันเวลาและจองคิว</h2>
+            <p style="color: rgba(26, 35, 126, 0.7);">เลือกวันเวลาที่สะดวก ตรวจสอบคิวว่าง และกรอกข้อมูลดวงชะตาด้านล่างนี้</p>
+            <div class="booking-frame-wrap">
+                <iframe src="https://cal.com" width="100%" height="650" scrolling="no"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <p style="font-weight: bold; margin: 0 0 5px 0;">ช่องทางการติดต่อและติดตามหมอดู</p>
+                <a href="https://facebook.com" target="_blank">👤 Facebook: ดาว-ภูมิ โหราศาสตร์</a>
+                <span style="color: rgba(26, 35, 126, 0.8); font-weight: 500;">📞 เบอร์โทรศัพท์: 08X-XXX-XXXX</span>
+            </div>
+            <p style="font-size: 12px; color: rgba(26, 35, 126, 0.4); margin: 0;">© 2026 ดาว-ภูมิ - ลิขสิทธิ์ถูกต้องตามกฎหมาย</p>
+        </div>
+    </footer>
 
 </body>
 </html>
