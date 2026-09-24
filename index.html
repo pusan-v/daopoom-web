@@ -6,12 +6,12 @@
     <title>ดาว-ภูมิ | ปรึกษาดวงชะตา โหราศาสตร์ และฮวงจุ้ย</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* ล็อกระบบโครงสร้างสีชมพูพาสเทลและบล็อกหน้าร้านแบบถาวร ไม่โดนบราวเซอร์บล็อกชัวร์ 100% */
+        /* ล็อกระบบโครงสร้างสีชมพูพาสเทลสว่างและบล็อกหน้าร้านถาวรชัวร์ 100% */
         * { box-sizing: border-box; }
         body { 
             font-family: 'Anuphan', sans-serif; 
-            background-color: #FCE4EC; /* โทนสีชมพูพาสเทลสว่าง */
-            color: #1A237E; /* โทนสีน้ำเงินเข้ม */
+            background-color: #FCE4EC; 
+            color: #1A237E; 
             margin: 0; 
             padding: 0; 
         }
@@ -39,13 +39,11 @@
             text-decoration: none; font-weight: 500; 
         }
 
-        /* HERO SECTION WITH CUSTOM IMAGE */
+        /* HERO SECTION - แก้ไขฝังลวดลายดวงดาวพาสเทลพรีเมียมลงในกล่องถาวร */
         .hero { 
             background-color: #1A237E;
-            /* [จุดแก้ไขรูปภาพ] นำลิงก์รูปภาพที่คุณอัปโหลดฝากเว็บมาวางแปะแทนที่ลิงก์ในเครื่องหมายคำพูดด้านล่างนี้ได้เลยครับ */
-            background-image: linear-gradient(rgba(252, 228, 236, 0.55), rgba(252, 228, 236, 0.55)), url('https://unsplash.com');
-            background-size: cover; background-position: center;
-            padding: 90px 20px; text-align: center;
+            background-image: linear-gradient(rgba(26, 35, 126, 0.6), rgba(26, 35, 126, 0.6)), url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23F8BBD0' fill-opacity='0.25'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm1 62c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40-5c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zM9 45c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm30 4c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm30-26c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: auto; padding: 90px 20px; text-align: center;
         }
         .hero-card { 
             background-color: rgba(252, 228, 236, 0.95); 
@@ -71,8 +69,8 @@
         .section-title p { color: #E65100; margin-top: 8px; font-weight: 500; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { 
-            background-color: rgba(248, 187, 208, 0.3); padding: 30px; 
-            border-radius: 16px; border: 1px solid rgba(26, 35, 126, 0.1);
+            background-color: rgba(248, 187, 208, 0.45); padding: 30px; 
+            border-radius: 16px; border: 1px solid rgba(26, 35, 126, 0.15);
             display: flex; flex-direction: column; justify-content: space-between;
         }
         .card h3 { font-size: 20px; font-weight: bold; margin: 15px 0 10px 0; }
@@ -101,7 +99,7 @@
         <a href="#booking" class="btn-top">จองคิวดูดวง</a>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH FIXED IMAGE -->
     <section class="hero">
         <div class="hero-card">
             <span class="badge">Premium Astrology</span>
