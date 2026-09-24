@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ดาว-ภูมิ | ปรึกษาดวงชะตา โหราศาสตร์ และฮวงจุ้ย</title>
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        basePink: '#FCE4EC',      
+                        accentPink: '#F8BBD0',    
+                        astroBlue: '#1A237E',     
+                        astroOrange: '#E65100',   
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { font-family: 'Anuphan', sans-serif; }
+    </style>
+</head>
+<body class="bg-basePink text-astroBlue">
+
+    <!-- HEADER -->
+    <header class="bg-accentPink/50 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center border-b border-astroBlue/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full border-2 border-astroOrange overflow-hidden bg-cover bg-center" style="background-image: url('image_pZnfah.png'); background-size: 280%; background-position: center;"></div>
+            <span class="text-xl font-bold tracking-wide text-astroBlue">ดาว-ภูมิ</span>
+        </div>
+        <a href="#booking" class="bg-astroBlue text-basePink px-5 py-2 rounded-full font-medium hover:bg-astroOrange transition-colors">จองคิวดูดวง</a>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[75vh] flex flex-col justify-center items-center text-center px-6 py-12 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-50 mix-blend-multiply">
+            <img src="image_pZnfah.png" alt="ดาว-ภูมิ พยากรณ์" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-10 max-w-3xl bg-basePink/80 p-8 rounded-3xl backdrop-blur-sm border border-accentPink shadow-xl">
+            <span class="text-astroOrange font-bold tracking-widest text-sm uppercase bg-accentPink px-4 py-1.5 rounded-full">Premium Astrology</span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-6 leading-tight text-astroBlue">
+                ไขรหัสลับแห่งจักรวาล <br><span class="text-astroOrange">ชี้ชะตาและปรับเปลี่ยนภูมิชีวิต</span>
+            </h1>
+            <p class="text-md md:text-lg mb-8 max-w-xl mx-auto text-astroBlue/90">
+                บริการให้คำปรึกษาด้านดวงชะตา โหราศาสตร์ไทย-ตะวันตก ดูฮวงจุ้ยเพื่อความมั่งคั่ง และตั้งชื่อมงคลเพื่อหนุนนำอนาคตของคุณ
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#booking" class="bg-astroOrange text-basePink font-semibold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    นัดหมายจองคิวออนไลน์
+                </a>
+                <!-- [แก้ไข] ใส่เบอร์โทรศัพท์ของคุณตรงคำว่า 08xxxxxxxx แทนเลข 0 -->
+                <a href="tel:08xxxxxxxx" class="bg-astroBlue text-basePink font-semibold px-6 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform flex items-center gap-2">
+                    📞 โทรจองคิวโดยตรง
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-astroBlue">ศาสตร์แห่งการพยากรณ์และปรับภูมิ</h2>
+            <p class="text-astroOrange mt-2 font-medium">เลือกรับการปรึกษาเพื่อปลดล็อกทุกปัญหาชีวิต</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-accentPink/40 p-8 rounded-2xl border border-astroBlue/10 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="text-astroOrange text-3xl mb-4">🌌</div>
+                    <h3 class="text-xl font-bold mb-3 text-astroBlue">โหราศาสตร์ไทย - ตะวันตก</h3>
+                    <p class="text-sm text-astroBlue/80 leading-relaxed">ตรวจพื้นดวงชะตา เจาะลึกดวงการงาน การเงิน ความรัก วิเคราะห์จุดเปลี่ยนสำคัญของชีวิตอย่างแม่นยำ</p>
+                </div>
+                <div class="mt-8 border-t border-astroBlue/10 pt-4"><span class="text-xs text-astroOrange font-semibold">คุยสดออนไลน์ 45 นาที</span></div>
+            </div>
+
+            <div class="bg-accentPink/40 p-8 rounded-2xl border border-astroBlue/10 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="text-astroOrange text-3xl mb-4">🧭</div>
+                    <h3 class="text-xl font-bold mb-3 text-astroBlue">ตรวจเช็กศาสตร์ฮวงจุ้ย</h3>
+                    <p class="text-sm text-astroBlue/80 leading-relaxed">ปรับเปลี่ยนทิศทางและพลังงานที่อยู่อาศัย ร้านค้า หรือออฟฟิศ เพื่อเปิดรับโชคลาภขจัดอุปสรรคชีวิต</p>
+                </div>
+                <div class="mt-8 border-t border-astroBlue/10 pt-4"><span class="text-xs text-astroOrange font-semibold">นัดหมายสถานที่จริง</span></div>
+            </div>
+
+            <div class="bg-accentPink/40 p-8 rounded-2xl border border-astroBlue/10 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="text-astroOrange text-3xl mb-4">✍️</div>
+                    <h3 class="text-xl font-bold mb-3 text-astroBlue">ตั้งชื่อ - เปลี่ยนชื่อมงคล</h3>
+                    <p class="text-sm text-astroBlue/80 leading-relaxed">ออกแบบชื่อและนามสกุลใหม่ที่ถูกโฉลกตามหลักทักษาและเลขศาสตร์ เพื่อเสริมสิริมงคลและเสน่ห์เมตตา</p>
+                </div>
+                <div class="mt-8 border-t border-astroBlue/10 pt-4"><span class="text-xs text-astroOrange font-semibold">จัดส่งเล่มรายงานสรุป</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section id="booking" class="bg-accentPink/30 py-20 px-6 border-t border-b border-astroBlue/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-astroBlue mb-2">นัดหมายวันเวลาและจองคิว</h2>
+            <p class="text-astroBlue/70 mb-8">เลือกวันเวลาที่สะดวก ตรวจสอบคิวว่าง และกรอกข้อมูลดวงชะตาด้านล่างนี้</p>
+            
+            <div class="bg-basePink rounded-2xl p-2 shadow-inner border border-astroBlue/10 min-h-[600px] overflow-hidden">
+                <!-- [แก้ไข] เปลี่ยน YOUR_USERNAME/YOUR_EVENT ให้เป็นลิงก์ที่คุณได้จาก Cal.com เช่น daopoom/consult -->
+                <iframe src="https://cal.com" class="w-full h-[650px] border-0 rounded-xl" scrolling="no"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <footer class="py-12 text-center border-t border-astroBlue/10 px-6">
+        <div class="max-w-md mx-auto mb-6 flex flex-col gap-3 text-sm">
+            <p class="font-bold text-astroBlue text-base">ช่องทางการติดต่อและติดตาม</p>
+            
+            <!-- [แก้ไข] เปลี่ยนลิงก์เฟซบุ๊กของคุณตรงนี้ (ตรง href) -->
+            <a href="https://facebook.com" target="_blank" class="text-astroBlue hover:text-astroOrange transition-colors flex items-center justify-center gap-2">
+                👤 Facebook: ดาว-ภูมิ โหราศาสตร์
+            </a>
+            
+            <!-- [แก้ไข] เปลี่ยนเบอร์โทรของคุณตรงนี้อีกจุดหนึ่ง -->
+            <a href="tel:08xxxxxxxx" class="text-astroBlue hover:text-astroOrange transition-colors">
+                📞 เบอร์โทรศัพท์: 08X-XXX-XXXX
+            </a>
+        </div>
+        <p class="text-xs text-astroBlue/40">© 2026 ดาว-ภูมิ - ลิขสิทธิ์ถูกต้องตามกฎหมาย</p>
+    </footer>
+
+</body>
+</html>
