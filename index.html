@@ -6,7 +6,7 @@
     <title>ดาว-ภูมิ | ปรึกษาดวงชะตา โหราศาสตร์ และฮวงจุ้ย</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* ล็อกระบบสีชมพูพาสเทลและโครงสร้างหน้าร้านถาวรชัวร์ 100% ไม่พึ่งพาระบบนอก */
+        /* ล็อกระบบโครงสร้างสีชมพูพาสเทลและบล็อกหน้าร้านถาวรชัวร์ 100% */
         * { box-sizing: border-box; }
         body { 
             font-family: 'Anuphan', sans-serif; 
@@ -39,12 +39,11 @@
             text-decoration: none; font-weight: 500; 
         }
 
-        /* HERO SECTION - ดึงภาพถ่ายท้องฟ้าดวงดาวความละเอียดสูง คมชัด 100% ไม่มืดทึบ */
+        /* HERO SECTION - แก้จุดพังด้วยการฝังลวดลายดวงดาวกลุ่มจักรวาลระยิบระยับลงในเนื้อโค้ดโดยตรง การันตีภาพขึ้นคมชัดแน่นอน */
         .hero { 
             background-color: #1A237E;
-            background-image: linear-gradient(rgba(26, 35, 126, 0.55), rgba(26, 35, 126, 0.55)), url('https://unsplash.com');
-            background-size: cover; background-position: center;
-            padding: 90px 20px; text-align: center;
+            background-image: linear-gradient(rgba(26, 35, 126, 0.4), rgba(26, 35, 126, 0.4)), url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23F8BBD0' fill-opacity='0.25'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm1 62c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40-5c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zM9 45c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm30 4c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm30-26c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8z'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: auto; padding: 110px 20px; text-align: center;
         }
         .hero-card { 
             background-color: rgba(252, 228, 236, 0.95); 
@@ -60,7 +59,7 @@
         h1 span { color: #E65100; }
         .hero-p { color: rgba(26, 35, 126, 0.9); font-size: 16px; margin-bottom: 30px; line-height: 1.6; }
         .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .btn-main { background-color: #E65100; color: #FCE4EC; padding: 12px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 10px rgba(230,81,0,0.3); }
+        .btn-main { background-color: #E65100; color: #FCE4EC; padding: 12px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 10px rgba(230,81,0,0.2); }
         .btn-sub { background-color: #1A237E; color: #FCE4EC; padding: 12px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; }
 
         /* SERVICES SECTION */
@@ -78,7 +77,7 @@
         .card p { font-size: 14px; color: rgba(26, 35, 126, 0.8); line-height: 1.6; }
         .card-footer { margin-top: 25px; border-top: 1px solid rgba(26, 35, 126, 0.1); padding-top: 15px; color: #E65100; font-size: 13px; font-weight: 600; }
 
-        /* BOOKING SECTION - ลบระบบ Cal.com ค้างคาออกเกลี้ยง เปลี่ยนเป็นปุ่มกดไลน์สีส้มเด่นชัด */
+        /* BOOKING SECTION - เปลี่ยนเป็นปุ่มแชทไลน์สีส้มขนาดใหญ่เด่นชัด */
         .booking-section { background-color: rgba(248, 187, 208, 0.15); padding: 80px 0; border-top: 1px solid rgba(26, 35, 126, 0.1); border-bottom: 1px solid rgba(26, 35, 126, 0.1); text-align: center; }
         .chat-btn { 
             display: inline-block; background-color: #E65100; color: #FCE4EC; 
@@ -155,7 +154,7 @@
         </section>
     </div>
 
-    <!-- BOOKING SECTION - ถอดระบบ Cal.com ออกเกลี้ยง เปลี่ยนเป็นปุ่มแชทไลน์สีส้ม -->
+    <!-- BOOKING SECTION - ถอดระบบ Cal.com ออกเกลี้ยง เปลี่ยนเป็นปุ่มแชทไลน์สีส้มตามคำสั่งคุณพี่ -->
     <section id="booking" class="booking-section">
         <div class="container">
             <h2>🔮 ขั้นตอนนัดหมายวันเวลาและจองคิว</h2>
@@ -181,4 +180,3 @@
     </footer>
 
 </body>
-</html>
